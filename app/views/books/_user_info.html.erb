@@ -1,0 +1,19 @@
+    <div class="col-lg-4">
+     <h1>New Post</h1>
+     <%= form_with model:@book, local:true do |f| %>
+     <form>
+       <div class="form-group">
+       <label for="title">Title</label>
+       <%= f.text_field :title %>
+       </div>
+
+        <div class="form-group">
+        <label for="opinion"></label>
+        <textarea class="form-control" rows="3">Opinion</textarea>
+        <%= f.text_area :body %>
+        </div>
+     </form>
+        <button type="button" class="btn btn-success"><%= f.submit 'Create Book' %></button>
+      <% end %>
+     </div>
+  </div>
