@@ -1,8 +1,5 @@
 class UsersController < ApplicationController
   
-  def index
-    @user=User.all
-  end 
   
   def show
     @user=User.find(params[:id])
@@ -17,6 +14,11 @@ class UsersController < ApplicationController
     @book.save
     redirect_to book_path(@book)
   end
+  
+  def index
+    @user=User.all
+  end 
+
 
   def book_params
     params.require(:book).permit(:title, :body, :user_id)

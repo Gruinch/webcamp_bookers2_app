@@ -1,9 +1,39 @@
-<!doctype html>
-<html>
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8"></div>
-      <% render '_user_info'%>
-    </div>
-  </div>
-</html>
+
+<div class="container">
+<div class="row">
+<div class="col-lg-4">
+  <h1>user info</h1>
+</div>
+<div class="col-lg-8">
+  <h1>Books</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Opinion</th>
+    </tr>
+  </thead>
+    <% @books.each do |book| %>
+    <tbody>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
+    </tr>
+    <% end %>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
