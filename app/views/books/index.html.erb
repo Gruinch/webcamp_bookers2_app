@@ -1,8 +1,10 @@
-
+<!doctype html>
 <div class="container">
 <div class="row">
 <div class="col-lg-4">
-  <h1>user info</h1>
+  <h1>User Info</h1>
+  <%= current_user.name %>
+  <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
   <h1>New Post</h1>
       <%= form_with model:@book, local:true do |f| %>
       <div class="row">
@@ -16,9 +18,7 @@
       <div class="row">
       <%= f.submit 'Create Book'%>
       </div>
-
       <% end %>
-
 </div>
 <div class="col-lg-8">
   <h1>Books</h1>
@@ -32,7 +32,7 @@
     <tbody>
     <% @books.each do |book| %>
     <tr>
-      <td><%= book.title %></td>
+      <td><%=link_to book.title, book_path(book)%></td>
       <td><%= book.body %></td>
     </tr>
     <% end %>
