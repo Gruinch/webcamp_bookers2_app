@@ -1,10 +1,26 @@
 class UsersController < ApplicationController
   
   def index
-    @users = User.all
-  end
+    @user=User.all
+  end 
   
   def show
     @user=User.find(params[:id])
+    @books = @user.books.page(params[:page]).reverse_order
+    @book=Book.new
+
   end
+  
+  def create
+    @book=Book.new(book_params)
+    @book.user_id=current_user.id
+    @book.save
+    redirect_to book_path(@book)
+  end
+
+  def book_params
+    params.require(:book).permit(:title, :body, :user_id)
+  end
+
+  
 end
