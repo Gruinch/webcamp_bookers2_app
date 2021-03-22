@@ -1,35 +1,16 @@
 <div class="container">
 <div class="row">
 
-<div class="col-lg-4">
-  <h1>User Info</h1>
-  <%= @user.name %>
-  <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
-  <h1>New Post</h1>
-      <%= form_with model:@book_new, local:true do |f| %>
-      <div class="row">
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-      </div>
-      <div class="row">
-      <%= f.label :body %>
-      <%= f.text_field :body %>
-      </div>
-      <div class="row">
-      <%= f.submit 'Create Book'%>
-      </div>
-      <% end %>
-</div>
+<%=render 'user_info'%>
 
 <div class="col-lg-8">
-  <h1>Book Detail</h1>
+  <h2>Book Detail</h2>
 <table class="table">
     <tbody>
     <tr>
-      <td>
-        <%=link_to @user.name, user_path(@user.id) %>
-      </td>
-      <td><%= @book.title %></td>
+      <td><%= attachment_image_tag @user, :profile_image, :fill, 10, 10, fallback: "no_image.jpg"%> </td>
+      <td><%=link_to @user.name, user_path(@user.id) %></td>
+      <td><%=link_to @book.title, book_path(@book.id) %></td>
       <td><%= @book.body %></td>
     </tr>
   </tbody>

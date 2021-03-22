@@ -1,28 +1,10 @@
-    <div class="container">
-    <div class="row">
-  <div class="col-lg-4">
-  <h1>User Info</h1>
-  <%= current_user.name %>
-  <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
-  <h1>New Post</h1>
-      <%= form_with model:@book, local:true do |f| %>
-        <div class="row">
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-        </div>
-        <div class="row">
-        <%= f.label :body %>
-        <%= f.text_field :body %>
-        </div>
-        <div class="row">
-        <%= f.submit 'Create Book'%>
-        </div>
-      <% end %>
-  </div>
+  <div class="container">
+  <div class="row">
+  <%=render 'books/user_info'%>
   <div class="col-lg-8">
 
   <h1>Users</h1>
- <table class="table">
+  <table class="table">
   <thead>
     <tr>
       <th scope="col">image</th>
@@ -39,6 +21,5 @@
     <% end %>
   </tbody>
  </table>
-
-    </div>
-    </div>
+ </div>
+ </div>
