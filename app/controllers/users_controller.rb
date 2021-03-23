@@ -14,15 +14,26 @@ class UsersController < ApplicationController
     @users=User.all
     @book_new = Book.new
   end
+  
+  before_action :ensure_current_user, {only: [:edit, :update]}
 
   def edit
     @user = User.find(params[:id])
+    if
+      @user == current_user
+    else
+      redirect_to user_path(@user)
+    end
   end
 
   def update
     @user=User.find(params[:id])
-    @user.update(user_params)
-    redirect_to user_path(@user.id)
+    if @user.update(user_params)
+       flash[:notice] = "Profile was successfullt updated!!"
+       redirect_to user_path(@user.id)
+    else
+       render :edit
+    end
   end
 
   def user_params

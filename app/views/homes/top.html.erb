@@ -2,6 +2,12 @@
 <html>
 <body>
 <main role="main" class="container">
+  <% if flash[:notice] %>
+  <p class="flash-message" id="notice">
+  <%= flash[:notice] %>
+  </p>
+  <% end %> 
+
 
   <div class="row justify-content-center">
     <h1>Welcome to <i class="fas fa-book"></i><strong> Bookers</strong>!!</h1>
