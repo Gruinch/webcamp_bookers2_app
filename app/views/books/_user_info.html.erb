@@ -1,4 +1,4 @@
-<div class="col-lg-4">
+<div class="d-block p-10 col-lg-4">
   <h1>User Info</h1>
   <table class="table">
   <thead>
@@ -15,19 +15,19 @@
     </tr>
   </tbody>
   </table>
-  <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
+  <button type="button" class="btn btn-secondary "><%= link_to 'Edit Profile', edit_user_path(current_user.id) %></button>
 
   <h1>New book</h1>
       <%= form_with model:@book_new, local:true do |f| %>
-      <div class="row">
-      <%= f.label :title  %>
-      <%= f.text_field :title %>
+      <div class="p-3 row">
+      <div><%= f.label :Title %></br>
+      <%= f.text_field :title, class:"form-control" %></div>
       </div>
-      <div class="row">
-      <%= f.label :body %>
-      <%= f.text_field :body %>
+      <div class="p-3 row">
+       <div><%= f.label :Opinion %></br>
+           <%= f.text_area :body, class:"form-control" %></div>
       </div>
-      <div class="row">
+      <div class="p-3 row">
       <%= f.submit  'Create Book',class:"btn btn-success" %>
       </div>
       <% end %>

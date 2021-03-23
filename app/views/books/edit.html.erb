@@ -1,0 +1,23 @@
+  <div class="container text-center ">
+    <h2>Editing Book</h2>
+
+    <%= form_with model:@book, local:true do |f| %>
+    <div class="d-block w-auto p-3 row">
+      <label for="d-block inputName">Title</label>
+      <div><%= f.text_field :title, autofocus: true, id:"inputName",class:"form-control" %></div>
+    </div>
+
+    <div class="d-block row">
+      <label for="d-block w-auto p-3 inputIntroduction">Opinion</label>
+      <div><%= f.text_area :body, autofocus: true, id:"inputIntroduction", class:"form-control"%></div>
+    </div>
+
+    <div class="d-block w-auto p-3 actions">
+      <%= f.submit 'Update Book', class:"btn btn-secondary" %>
+    </div>
+    <% end %>
+    <div><%= link_to'Show',user_path(@user) %></div>
+    <div>|</div>
+    <div><%= link_to'Back',books_path %></div>
+
+  </div>
