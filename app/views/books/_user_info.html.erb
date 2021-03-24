@@ -1,4 +1,17 @@
 <div class="d-block p-10 col-lg-4">
+  <% if flash[:notice] %>
+  　<p class="notice"><%= notice %></p>
+  <% end %>
+  <% if @book_new.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+    <ul>errors!
+  <% @book_new.errors.full_messages.each do |message| %>
+
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+    </div>
+  <% end %>
   <h1>User Info</h1>
   <table class="table">
   <thead>
