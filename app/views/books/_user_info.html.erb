@@ -1,4 +1,4 @@
-<div class="d-block p-10 col-lg-4">
+<div class="d-block p-10 col-sm-4">
   <% if flash[:notice] %>
   　<p class="notice"><%= notice %></p>
   <% end %>
@@ -6,7 +6,6 @@
     <div id="error_explanation" class="alert alert-danger">
     <ul>errors!
   <% @book_new.errors.full_messages.each do |message| %>
-
       <li><%= message %></li>
     <% end %>
     </ul>
@@ -28,7 +27,12 @@
     </tr>
   </tbody>
   </table>
-  <button type="button" class="btn btn-secondary "><%= link_to 'Edit Profile', edit_user_path(current_user.id) %></button>
+  <% if @user.id==current_user.id %>
+  <button type="button" class="btn btn-secondary ">
+  <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
+  </button>
+  <% end %>
+
 
   <h1>New book</h1>
       <%= form_with model:@book_new, local:true do |f| %>
