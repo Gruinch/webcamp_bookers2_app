@@ -1,15 +1,17 @@
-
+<div class="container">
 <div class="row">
 
 <%=render 'user_info'%>
 
-<div class="col-lg-8">
+<div class="col-md-9">
   <h2>Book detail</h2>
 <table class="table">
     <tbody>
     <tr>
-      <td><%= attachment_image_tag @user, :profile_image, :fill, 10, 10, fallback: "no_image.jpg"%><br/>
-          <%=link_to @user.name, user_path(@user.id) %></td>
+      <td><%= link_to user_path(@user.id) do %>
+          <%= attachment_image_tag @user, :profile_image, :fill, 10, 10, fallback: "no_image.jpg"%><br/>
+          <%= @user.name%>
+          <% end %></td>
       <td><%=link_to @book.title, book_path(@book.id) %></td>
       <td><%= @book.body %></td>
       <% if @user.id==current_user.id %>
@@ -19,4 +21,5 @@
     </tr>
   </tbody>
 </table>
+</div>
 </div>

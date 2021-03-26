@@ -1,4 +1,4 @@
-<div class="d-block p-10 col-sm-4">
+<div class="d-block p-10 col-md3">
   <% if flash[:notice] %>
   　<p class="notice"><%= notice %></p>
   <% end %>
@@ -27,14 +27,9 @@
     </tr>
   </tbody>
   </table>
-  <% if @user.id==current_user.id %>
-  <button type="button" class="btn btn-secondary ">
-  <%= link_to 'Edit Profile', edit_user_path(current_user.id) %>
-  </button>
-  <% else %>
-  <button type="button" class="btn btn-secondary "><p>
-  <%= link_to 'Edit Profile', user_path(current_user.id) %>
-  </p></button>
+  <%= link_to edit_user_path(@user) do %>
+  <button type="button" class="btn btn-secondary">
+  <i class="fas fa-user-cog"></i></button>
   <% end %>
 
 

@@ -12,4 +12,13 @@ class ApplicationController < ActionController::Base
     flash[:notice]
     user_path(current_user.id)
   end
+
+  def after_sign_out_path_for(resource)
+    flash[:notice]
+    root_path
+  end
+
+  def shows
+    @user = current_user
+  end
 end
