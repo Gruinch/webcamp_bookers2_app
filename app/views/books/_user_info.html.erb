@@ -1,4 +1,4 @@
-<div class="d-block p-10 col-md3">
+  <div class="col-md-3">
   <% if flash[:notice] %>
   　<p class="notice"><%= notice %></p>
   <% end %>
@@ -12,39 +12,38 @@
     </div>
   <% end %>
   <h1>User Info</h1>
-  <table class="table">
-  <thead>
-    <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-  </thead>
-  <tbody>
-    <tr>
-     <th scope="row">name</th>
-    <td><%= @user.name %></td>
-    </tr>
-    <tr>
-      <th scope="row">introduction</th>
-      <td><%= @user.introduction %></td>
-    </tr>
-  </tbody>
-  </table>
-  <%= link_to edit_user_path(@user) do %>
-  <button type="button" class="btn btn-secondary">
-  <i class="fas fa-user-cog"></i></button>
-  <% end %>
+    <table class="table">
+      <thead>
+        <%= attachment_image_tag @user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg"%>
+      </thead>
+      <tbody>
+        <tr>
+         <th scope="row">name</th>
+        <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th scope="row">introduction</th>
+          <td><%= @user.introduction %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to edit_user_path(@user) do %>
+      <button type="button" class="btn btn-outline-secondary">
+      <i class="fas fa-user-cog"></i></button>
+    <% end %>
 
-
-  <h1>New book</h1>
+    <h1>New book</h1>
       <%= form_with model:@book_new, local:true do |f| %>
       <div class="p-3 row">
-      <div><%= f.label :Title %></br>
-      <%= f.text_field :title, class:"form-control" %></div>
+        <div><%= f.label :Title %></br>
+        <%= f.text_field :title, class:"form-control" %></div>
       </div>
       <div class="p-3 row">
-       <div><%= f.label :Opinion %></br>
-           <%= f.text_area :body, class:"form-control" %></div>
+         <div><%= f.label :Opinion %></br>
+             <%= f.text_area :body, class:"form-control" %></div>
       </div>
       <div class="p-3 row">
-      <%= f.submit  'Create Book',class:"btn btn-success" %>
+        <%= f.submit  'Create Book',class:"btn btn-success" %>
       </div>
       <% end %>
 </div>

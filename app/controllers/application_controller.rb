@@ -17,8 +17,4 @@ class ApplicationController < ActionController::Base
     flash[:notice]
     root_path
   end
-
-  def shows
-    @user = current_user
-  end
 end
