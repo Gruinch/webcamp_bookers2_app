@@ -1,34 +1,37 @@
-  <div class="container text-center ">
-    <h2>User Info</h2>
-    <% if @user.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-    <ul>errors!
-  <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+  <div class="container">
+      <% if @user.errors.any? %>
+        <div id="error_explanation" class="row alert alert-danger">
+        <ul>errors!
+       <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+       <% end %>
+        </ul>
+        </div>
+      <% end %>
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <h2>User Info</h2>
+    <%= form_with model:@user, local:true do |f| %>
+      <div class="d-block p-3 form-group">
+        <label for="d-block inputName">Name</label>
+        <div><%= f.text_field :name, autofocus: true, id:"inputName", class:"form-control row-auto"%></div>
+      </div>
+
+      <div class="d-block p-3">
+        <label for="d-block inputImage">Image</label>
+        <div><%= f.attachment_field :profile_image %></div>
+      </div>
+
+      <div class="d-block p-3 form-group">
+        <label for="d-block inputIntroduction">Introduction</label>
+        <div><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction", class:"form-control row-auto", rows:"5"%></div>
+      </div>
+
+      <div class="d-block p-3 actions">
+        <%= f.submit 'Update User', class:"btn btn-secondary" %>
+      </div>
     <% end %>
-    </ul>
+      </div>
     </div>
-  <% end %>
-
-<%= form_with model:@user, local:true do |f| %>
-  <div class="d-block w-auto p-3 row">
-  <label for="d-block inputName">Name</label>
-  <div><%= f.text_field :name, autofocus: true, id:"inputName"%></div>
-  </div>
-
-  <div class="d-block w-auto p-3 row">
-  <div><%= attachment_image_tag @user, :profile_image, :fill, 30, 30, fallback: "no_image.jpg"%></div>
-  <label for="d-block w-auto p-3 inputImage">ProfileImage</label>
-  <div><%= f.attachment_field :profile_image %></div>
-  </div>
-
-  <div class="d-block row">
-  <label for="d-block w-auto p-3 inputIntroduction">Introduction</label>
-  <div><%= f.text_area :introduction, autofocus: true, id:"inputIntroduction"%></div>
-  </div>
-
-  <div class="d-block w-auto p-3 actions">
-    <%= f.submit 'Update User', class:"btn btn-secondary" %>
-  </div>
-<% end %>
 </div>

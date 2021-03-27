@@ -1,30 +1,35 @@
-  <div class="container center">
-    <h2>Editing Book</h2>
-  <% if @book.errors.any? %>
-    <div id="error_explanation" class="alert alert-danger">
-    <ul>errors!
-  <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-    </div>
-  <% end %>
+  <div class="container">
+      <% if @book.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger row">
+        <ul>errors!
+      <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+        </div>
+      <% end %>
 
-    <%= form_with model:@book, local:true do |f| %>
-    <div class="d-block w-auto p-3 row">
-      <label for="d-block inputName">Title</label>
-      <div><%= f.text_field :title, autofocus: true, id:"inputName",class:"form-control" %></div>
-    </div>
+    <div class="row">
+      <div class="col-3"></div>
+        <div class="col-6">
+        <h2>Editing Book</h2>
 
-    <div class="d-block row">
-      <label for="d-block w-auto p-3 inputIntroduction">Opinion</label>
-      <div><%= f.text_area :body, autofocus: true, id:"inputIntroduction", class:"form-control"%></div>
-    </div>
+        <%= form_with model:@book, local:true do |f| %>
+        <div class="d-block p-3">
+          <label for="d-block inputName">Title</label>
+          <div><%= f.text_field :title, autofocus: true, id:"inputName",class:"form-control row-auto" %></div>
+        </div>
 
-    <div class="d-block w-auto p-3 actions">
-      <%= f.submit 'Update Book', class:"btn btn-secondary" %>
-    </div>
-    <% end %>
-    <div><%= link_to'Show',book_path(@book) %>|<%= link_to'Back',books_path %></div>
+        <div class="d-block p-3">
+          <label for="d-block p-3 inputIntroduction">Opinion</label>
+          <div><%= f.text_area :body, autofocus: true, id:"inputIntroduction", class:"form-control row-auto"%></div>
+        </div>
 
+        <div class="d-block p-3 actions">
+          <%= f.submit 'Update Book', class:"btn btn-secondary" %>
+        </div>
+        <% end %>
+        <div><%= link_to'Show',book_path(@book) %>|<%= link_to'Back',books_path %></div>
+        </div>
+    </div>
   </div>
